@@ -65,6 +65,40 @@ var Note = React.createClass({
     }
 });
 
-ReactDOM.render(<Note>Hello World</Note>,
-    document.getElementById('app')
-);
+
+var Board = React.createClass({
+    propTypes: {
+        count: function(props, propName) {
+            console.log('COUNT:');
+            console.log('Valor o contenido de props[propName]->', props[propName]);
+
+            console.log('Todo el Objecto Props->',props);
+            console.log('El nombre de propName->',propName);
+
+            if (typeof props[propName] !== "number") {
+                return new Error('The count property must be a number');
+            }
+
+            if (props[propName] > 100) {
+                return new Error("Creating " + props[propName] + " notes is ridiculous");
+            }
+        },
+
+        Nombre: function(props, propName) {
+            console.log('NOMBRE:');
+            console.log('Valor o contenido de props[propName]->', props[propName]);
+
+            console.log('Todo el Objecto Props->',props);
+            console.log('El nombre de propName->',propName);
+        }
+    },
+
+    render: function() {
+        return <div className="board">{this.props.count}</div>
+    }
+});
+
+
+React.render(<Board count={500} Nombre="Hector" Apellido="Rojas"/>,
+    document.getElementById('app'));
+
