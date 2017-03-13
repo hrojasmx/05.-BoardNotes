@@ -12,12 +12,20 @@ var {Route, Router, IndexRoute, hashHistory} = require('react-router');
 
 
 var Note = React.createClass({
+    edit: function(){
+        alert('editing note');
+    },
+
+    remove: function() {
+        alert('removing note');
+    },
+
     render: function() {
         return (
             <div className="note">
                 <span>
-                    <button className="btn btn-primary glyphicon glyphicon-pencil"/>
-                    <button className="btn btn-danger glyphicon glyphicon-trash"/>
+                    <button onClick={this.edit}   className="btn btn-primary glyphicon glyphicon-pencil"/>
+                    <button onClick={this.remove} className="btn btn-danger glyphicon glyphicon-trash"/>
                 </span>
             </div>
         );
