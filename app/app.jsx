@@ -22,14 +22,16 @@ var Note = React.createClass({
 
     save: function() {
         // var val = this.refs.newText.getDOMNode().value;
-        var val = this.refs.newText.value;
+        // var val = this.refs.newText.value;
 
-        alert("TODO: Save note value:->" + val);
+        //this.props.onChange(this.refs.newText.getDOMNode().value, this.props.index);
+        this.props.onChange(this.refs.newText.value, this.props.index);
         this.setState({editing: false});
     },
 
     remove: function() {
-        alert('removing note');
+        // alert('removing note');
+        this.props.onRemove(this.props.index);
     },
 
     renderDisplay: function() {
@@ -104,14 +106,33 @@ var Board = React.createClass({
         };
     },
 
+    update: function(newText, i) {
+        var arr = this.state.notes;
+        arr[i] = newText;
+        this.setState({notes:arr});
+    },
+
+    remove: function(i) {
+        var arr = this.state.notes;
+        arr.splice(i, 1);
+        this.setState({notes: arr});
+    },
+
+    eachNote: function(note, i) {
+        return (
+            <Note key={i}
+                  index={i}
+                  onChange={this.update}
+                  onRemove={this.remove}
+            >{note}</Note>
+        );
+    },
+
     render: function() {
-        return (<div className="board">
-                {this.state.notes.map(function(note, i) {
-                    return (
-                        <Note key={i}>{note}</Note>
-                    );
-                })}
-            </div>
+        return (
+                <div className="board">
+                    {this.state.notes.map(this.eachNote)}
+                </div>
         );
     }
 });
