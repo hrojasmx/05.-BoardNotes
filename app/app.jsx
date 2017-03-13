@@ -69,11 +69,11 @@ var Note = React.createClass({
 var Board = React.createClass({
     propTypes: {
         count: function(props, propName) {
-            console.log('COUNT:');
-            console.log('Valor o contenido de props[propName]->', props[propName]);
-
-            console.log('Todo el Objecto Props->',props);
-            console.log('El nombre de propName->',propName);
+            // console.log('COUNT:');
+            // console.log('Valor o contenido de props[propName]->', props[propName]);
+            //
+            // console.log('Todo el Objecto Props->',props);
+            // console.log('El nombre de propName->',propName);
 
             if (typeof props[propName] !== "number") {
                 return new Error('The count property must be a number');
@@ -85,20 +85,38 @@ var Board = React.createClass({
         },
 
         Nombre: function(props, propName) {
-            console.log('NOMBRE:');
-            console.log('Valor o contenido de props[propName]->', props[propName]);
-
-            console.log('Todo el Objecto Props->',props);
-            console.log('El nombre de propName->',propName);
+            // console.log('NOMBRE:');
+            // console.log('Valor o contenido de props[propName]->', props[propName]);
+            //
+            // console.log('Todo el Objecto Props->',props);
+            // console.log('El nombre de propName->',propName);
         }
     },
 
+    getInitialState: function() {
+        return {
+            notes: [
+                'Call Bill',
+                'Email Lisa',
+                'Make dentist appt',
+                'Send Proposal'
+            ]
+        };
+    },
+
     render: function() {
-        return <div className="board">{this.props.count}</div>
+        return (<div className="board">
+                {this.state.notes.map(function(note, i) {
+                    return (
+                        <Note key={i}>{note}</Note>
+                    );
+                })}
+            </div>
+        );
     }
 });
 
 
-React.render(<Board count={500} Nombre="Hector" Apellido="Rojas"/>,
+React.render(<Board count={10} Nombre="Hector" Apellido="Rojas"/>,
     document.getElementById('app'));
 
