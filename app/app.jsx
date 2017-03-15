@@ -3,7 +3,8 @@ var ReactDOM = require('react-dom');
 var {Route, Router, IndexRoute, hashHistory} = require('react-router');
 
 // var Box = require('./Lifecycle01.jsx');
-var Box = require('./Lifecycle02.jsx');
+// var Box = require('./Lifecycle02.jsx');
+var Box = require('./Lifecycle03.jsx');
 
 
 // Load foundation
@@ -169,4 +170,5 @@ React.render(<Board count={10} Nombre="Hector" Apellido="Rojas"/>,
     document.getElementById('app'));
 */
 
-ReactDOM.render(<Box />, document.getElementById('app'));
+ReactDOM.render(<Box colors="Red,DarkMagenta,Salmon,Chartreuse"/>,
+    document.getElementById('app'));
