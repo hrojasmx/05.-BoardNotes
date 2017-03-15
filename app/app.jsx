@@ -2,7 +2,8 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var {Route, Router, IndexRoute, hashHistory} = require('react-router');
 
-var Box = require('./Lifecycle01.jsx');
+// var Box = require('./Lifecycle01.jsx');
+var Box = require('./Lifecycle02.jsx');
 
 
 // Load foundation
@@ -168,11 +169,4 @@ React.render(<Board count={10} Nombre="Hector" Apellido="Rojas"/>,
     document.getElementById('app'));
 */
 
-    ReactDOM.render(<Box />, document.getElementById('app'));
-
-    var getRidOfBox = document.getElementsByTagName('section')[0];
-
-    getRidOfBox.onclick = function() {
-        ReactDOM.unmountComponentAtNode(document.getElementById('app'));
-        alert("component is unmounted");
-    }
+ReactDOM.render(<Box />, document.getElementById('app'));
